@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-    baseURL: `http://localhost:3000`,
+    baseURL: `https://ui-uknow-stiinta-production.up.railway.app/`,
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -9,11 +9,11 @@ const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.response.use(
-    function(response) {
+    function (response) {
         console.log(response)
         return response;
     },
-    function(error) {
+    function (error) {
         const res = error.response;
         if (res.status == 401) {
             console.log('Redirigir al home');//cambiar esto por la ruta válida del home            
@@ -27,4 +27,4 @@ axiosClient.interceptors.response.use(
 
 export default (
     axiosClient
-  )
+)
